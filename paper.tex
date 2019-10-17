@@ -1,0 +1,428 @@
+%  LaTeX support: latex@mdpi.com 
+%  In case you need support, please attach all files that are necessary for compiling as well as the log file, and specify the details of your LaTeX setup (which operating system and LaTeX version / tools you are using).
+
+%=================================================================
+\documentclass[journal,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
+\graphicspath{ {./images/} }
+% If you would like to post an early version of this manuscript as a preprint, you may use preprint as the journal and change 'submit' to 'accept'. The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
+
+%--------------------
+% Class Options:
+%--------------------
+%----------
+% journal
+%----------
+% Choose between the following MDPI journals:
+% acoustics, actuators, addictions, admsci, aerospace, agriculture, agriengineering, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, applsci, arts, asc, asi, atmosphere, atoms, axioms, batteries, bdcc, behavsci , beverages, bioengineering, biology, biomedicines, biomimetics, biomolecules, biosensors, brainsci , buildings, cancers, carbon , catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, children, cleantechnol, climate, clockssleep, cmd, coatings, colloids, computation, computers, condensedmatter, cosmetics, cryptography, crystals, dairy, data, dentistry, designs , diagnostics, diseases, diversity, drones, econometrics, economies, education, ejihpe, electrochem, electronics, energies, entropy, environments, epigenomes, est, fermentation, fibers, fire, fishes, fluids, foods, forecasting, forests, fractalfract, futureinternet, futurephys, galaxies, games, gastrointestdisord, gels, genealogy, genes, geohazards, geosciences, geriatrics, hazardousmatters, healthcare, heritage, highthroughput, horticulturae, humanities, hydrology, ijerph, ijfs, ijgi, ijms, ijns, ijtpp, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jcdd, jcm, jcp, jcs, jdb, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmse, jnt, jof, joitmc, jpm, jrfm, jsan, land, languages, laws, life, literature, logistics, lubricants, machines, magnetochemistry, make, marinedrugs, materials, mathematics, mca, medicina, medicines, medsci, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, modelling, molbank, molecules, mps, mti, nanomaterials, ncrna, neuroglia, nitrogen, notspecified, nutrients, ohbm, optics, particles, pathogens, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photonics, physics, plants, plasma, polymers, polysaccharides, preprints , proceedings, processes, proteomes, psych, publications, quantumrep, quaternary, qubs, reactions, recycling, religions, remotesensing, reports, resources, risks, robotics, safety, sci, scipharm, sensors, separations, sexes, signals, sinusitis, smartcities, sna, societies, socsci, soilsystems, sports, standards, stats, surfaces, surgeries, sustainability, symmetry, systems, technologies, test, toxics, toxins, tropicalmed, universe, urbansci, vaccines, vehicles, vetsci, vibration, viruses, vision, water, wem, wevj
+
+%---------
+% article
+%---------
+% The default type of manuscript is "article", but can be replaced by: 
+% abstract, addendum, article, benchmark, book, bookreview, briefreport, casereport, changes, comment, commentary, communication, conceptpaper, conferenceproceedings, correction, conferencereport, expressionofconcern, extendedabstract, meetingreport, creative, datadescriptor, discussion, editorial, essay, erratum, hypothesis, interestingimages, letter, meetingreport, newbookreceived, obituary, opinion, projectreport, reply, retraction, review, perspective, protocol, shortnote, supfile, technicalnote, viewpoint
+% supfile = supplementary materials
+
+%----------
+% submit
+%----------
+% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g., the logo of the journal will get visible), the headings, and the copyright information. Also, line numbering will be removed. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
+
+%------------------
+% moreauthors
+%------------------
+% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
+
+%---------
+% pdftex
+%---------
+% The option pdftex is for use with pdfLaTeX. If eps figures are used, remove the option pdftex and use LaTeX and dvi2pdf.
+
+%=================================================================
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{xx}
+\issuenum{1}
+\articlenumber{5}
+\pubyear{2019}
+\copyrightyear{2019}
+%\externaleditor{Academic Editor: name}
+\history{Received: date; Accepted: date; Published: date}
+%\updates{yes} % If there is an update available, un-comment this line
+
+%% MDPI internal command: uncomment if new journal that already uses continuous page numbers 
+%\continuouspages{yes}
+
+%------------------------------------------------------------------
+% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
+%\pdfoutput=1
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, calc, indentfirst, fancyhdr, graphicx, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, amsthm, hyphenat, natbib, hyperref, footmisc, geometry, caption, url, mdframed, tabto, soul, multirow, microtype, tikz
+
+%=================================================================
+%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Decentralized Data Marketplace to Enable Trusted Machine Economy}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0000-000-000X} % Add \orcidA{} behind the author's name
+%\newcommand{\orcidauthorB}{0000-0000-000-000X} % Add \orcidB{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{Zan-Jun Wang $^{1}$, Ching-Hua (Vivian) Lin $^{2}$, Yang-Hao Yuan $^{3}$ and Ching-Chun (Jim) Huang$^{2,}$*}
+
+% Authors, for metadata in PDF
+\AuthorNames{Zan-Jun Wang, Ching-Hua (Vivian) Lin, Yang-Hao Yuan and Ching-Chun (Jim) Huang}
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Department of Computer Science and Information Engineering, National Taiwan University\\
+$^{2}$ \quad Department of Computer Science and Information Engineering, National Cheng Kung University\\
+$^{3}$ \quad BiiLabs, Co., Ltd.}
+
+% Contact information of the corresponding author
+\corres{Correspondence: jserv@ccns.ncku.edu.tw}
+
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3} 
+%\secondnote{These authors contributed equally to this work.}
+% The commands \thirdnote{} till \eighthnote{} are available for further notes
+
+%\simplesumm{} % Simple summary
+
+%\conference{} % An extended version of a conference paper
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+%%%% 200 words
+\abstract{Transacting IoT data must be different in many from traditional approaches in order to build much-needed trust in data marketplaces—trust that will be key to their sustainability. Data generated internally to an organization is usually not enough to remain competitive, enhance customer experiences, or improve strategic decision-making. In this paper, we propose a novel approach to construct IoT-enabled data marketplaces via a decentralized and trustless architecture through the posting of trade records while including the transaction process on distributed ledgers. This approach can efficiently enhance the degree of transparency, as all interactions with smart contracts will be written on-chain. Storage via an end-to-end encrypted message channel allows transmitting and accessing trusted data streams over distributed ledgers regardless of the size or cost of the device, while simultaneously making a verifiable Auth-compliant request to the platform. Furthermore, the platform will complete matching, trading and refunding processes without human intervention which also protects the rights of data providers and consumers through a trading policy written on the smart contract, and finally apply evolutionary game theory to the machine economy.}
+
+% Keywords
+\keyword{streaming data; crowd sensing; data marketplace; decentralization}
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Diversity
+%\LSID{\url{http://}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Applied Sciences:
+%\featuredapplication{Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Data:
+%\dataset{DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.}
+
+%\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Toxins
+%\keycontribution{The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.}
+
+%\setcounter{secnumdepth}{4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%The order of the section titles is: Introduction, Materials and Methods, Results, Discussion, Conclusions for these journals: aerospace,algorithms,antibodies,antioxidants,atmosphere,axioms,biomedicines,carbon,crystals,designs,diagnostics,environments,fermentation,fluids,forests,fractalfract,informatics,information,inventions,jfmk,jrfm,lubricants,neonatalscreening,neuroglia,particles,pharmaceutics,polymers,processes,technologies,viruses,vision
+
+\section{Introduction}
+The growth of data marketplaces is an inevitable result of the IoT (Internet of Things) revolution. As physical assets such as ships, factories, vehicles, farms and buildings become digital, their digital twins will gradually act as secure data exchanges.\cite{digitaltwin}\cite{AutonomousDriving} As data streams surge across silos and carry value across organizations, traditional value chains will transition into a web of value. This paradigm shift will be more complex to administers, forcing businesses to rethink their competitive play as part of these ecosystems. Data marketplaces will emerge as a means to exchange data, monetize data streams and provide the basis of new business models. We refer to this new wave of value creation, for the Internet of Everything, as the "Economy of Things." There are three main barriers to achieving data marketplace:
+\begin{enumerate}[leftmargin=*,labelsep=4.9mm]
+    \item Data owners do not have much control over their data and their data is locked in silos managed by products and services companies.
+    \item Data owners only have access to their own data which has little value when it comes to knowledge discovery.
+    \item Data owners do not know how to discover knowledge from raw data.
+\end{enumerate}
+
+To overcome these barriers, we implemented IoT-enabled data marketplace and sensor data submission functionalities which are intended to be very lightweight and capable of running on embedded devices. They will only need to perform Tangle operations (e.g., producing and consuming secure channels) and communicate with decentralized facilities, which do not rely on single-source network infrastructure. This proposed reference architecture includes functions that could be mapped to different stakeholders, and multiple functions can be implemented by the same administrative stakeholder in a given operational deployment.
+\begin{enumerate}[leftmargin=*,labelsep=4.9mm]
+    \item Data Sellers are entities that deploy an IoT infrastructure, for example smart energy meters. These entities are interested in selling the collected data or subsets of that data.
+    \item Managed Data Lakes would typically store a massive amount of data and metadata to enable data discovery.
+    \item Data Buyers consuming data streams or downloading data sets are interested in the additional value that external data can bring to their internal data.
+\end{enumerate}
+
+Looking at Airbox\cite{LASS} as an example, every household with an Airbox device can collect air quality records automatically and autonomically—rather than passively receive the outcomes from the centralized authorities. To protect privacy, data should be encrypted before going on-chain. As for data reliability, we extended the backbone design of the Airbox to interoperate smart-contract-oriented structure to record every transaction. At the same time, data on-chain will send a verifiable request to mark itself as "being tradeable." This step enables buyers to review and bargain at will. Last but not least, payments will be stored on the smart contracts until the transactions are confirmed. The entire sequence is illustrated in Figure \ref{fig:airbox}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{airbox}
+    \caption{IoT-enabled personal air quality assistant.}
+    \label{fig:airbox}
+\end{figure}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materials and Methods}
+\subsection{Related Work}
+As the economic value of huge amounts of data emerges, several researchers have started to explore the design of the data marketplace. The Third Party Auditors (TPAs)-based frameworks\cite{TPA} is far from being satisfactory due to the unstandardized data format and dynamic nature of IoT data. Therefore, a decentralized data integrity validation and trading process has been proposed in recent years, and distributed ledger technology (DLT) is considered a solution, which has the immutable data storage feature that the existence of data can be trusted and no longer rely on any third party authority.
+
+Data Integrity as a Service (DIaaS) is a blockchain based framework for data integrity proposed by Liu et al.\cite{DIaas} which is a Cloud Server Service (CSS) that allows both data provider and consumer to validate data integrity by comparing hashes on Ethereum smart contracts\cite{smartContract} and cloud servers. Moreover, Ethereum smart contract can also realize the purchase agreement, including authorization and penalization. However, the architecture of DIaaS needs high trust on the CSS. If the CSS is malicious or has crashed, losses to both providers and consumers will result. Also, performance analysis shows that IoT devices have low efficiency interactions with Ethereum due to the time-consuming Proof-of-Work(PoW) process.
+
+To address the inefficiency of the Blockchain, \textbf{IOTA}\cite{IOTAwhitepaper} is a cryptocurrency for the IoT industry based on a revolutionary distributed ledger technology, the \textbf{Tangle}, which enables zero-transaction. On top of that, \textbf{Masked Authenticated Messaging(MAM)}\cite{MAM}, is provided for a second layer data communication protocol which allows transmission, access, and verification of an encrypted data stream over the Tangle where privacy and integrity meet.
+
+Based on Tangle and MAM, the IOTA foundation launched a data marketplace\cite{IOTADataMarket} which is suitable for IoT streaming data that not only allows data providers to put data on Tangle without any trusted cloud services, but also allow providers and consumers to trade on Tangle with privacy protection and assurance of data integrity from the source with MAM. Nevertheless, the platform design is centralized, where new devices require manual approval from the IOTA foundation to be visible in the marketplace. Also, interacting with Tangle is still the bottleneck for low-level devices especially in an unstable network or electrically noisy environment.
+
+A different framework design proposed by Gupta, S.Kanhere and Jurdak\cite{3tierDataMarket} could reduce the burden of low-level devices as mentioned. The infrastructure is a 3-tier decentralized data marketplace architectural design with Ethereum smart contracts which consist of providers, consumers and brokers. The broker is a trustless and highly resourced device that will facilitate the trading of data between the consumer and providers. However, the data integrity and authentication of each participant is still forthcoming.
+
+The sustainability of IoT economic system was discussed by Dusit Niyato et al.\cite{UtilityStruct}. They evaluated the utility structure of data trading and presented a game theory model.  Data marketplace organizers can determine their policies to ensure a sustainable system with the Nash Equilibrium found via game theory and its utility structure. However, refund and subscription economies were not mentioned in their work.
+
+Such work proposed different solutions to specific issues of data marketplaces. In this paper, we propose an overall design of decentralized data marketplace that handles data integrity and trading procedures such as buyout and subscriptions to future data on a distributed ledger.
+
+\subsection{System Architecture}
+Our proposed data marketplace framework is a 3-tier decentralized architecture with a registrar who is responsible for marketplace registration in order to post participants' information on distributed ledgers for validation, data providers who publish data, data consumers who search for interested products and issue a new trade, and brokers who interact between data providers and consumers, including data publishing, product metadata generation and trading process.
+
+\subsubsection{Participants}
+There are four major roles in the decentralized data marketplace (Figure \ref{fig:system_design}).
+
+\begin{itemize}[leftmargin=*,labelsep=5.8mm]
+\item \textbf{Registrar: }
+The registrar is responsible for creating a Registration Contract, which maintains a lookup table of participants, and has the authority to control the participant lists of the decentralized data marketplace.
+\item \textbf{Data Provider: }
+Data providers, who generate and preserve streaming data, are willing to sell streaming data to consumers and receive subscription fees from consumers, which can be used to improve the quantity and accuracy of their device or service.
+\item \textbf{Consumer: }
+Consumers aspire to obtain streaming data to promote the value of their service. However, it is a significant challenge for most consumers to collect the desired data by themselves, so they look to purchasing the streaming data from data providers.
+\item \textbf{Broker: }
+Brokers represent data providers and consumers to perform computing tasks as brokers are expected to have higher resource. Some trustworthy brokers who pass procedures for conformity assessment are added to the decentralized data marketplace. Once a qualified data provider requests to launch a new product, the broker is requested to deal with the trading process and publish the provider’s data streams to the MAM channel. Brokerage fees for each product will be charged by the broker.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{system_design}
+    \caption{The system design of a decentralized architecture which consist of a registrar, data providers, consumers and brokers.}
+    \label{fig:system_design}
+\end{figure}
+
+\subsubsection{Components}
+\begin{itemize}[leftmargin=*,labelsep=5.8mm]
+\item \textbf{Mask Authenticated Messaging: }
+IOTA\cite{IOTAwhitepaper} is a feeless and scalable cryptocurrency while MAM is the second layer data communication protocol built on top of Tangle.
+
+MAM resolves the challenge to publish encrypted streaming data to distributed ledgers. It publishes messages encrypted with a \textbf{session key} to the \textbf{channel}, which is a form of transaction where each address can be derived from the previous one. Therefore, with each \textbf{channel root}—the first message of a channel and the session key—all data on the channel is accessible.
+
+One can create multiple channels, however, the size of a channel is fixed which is decided before creation. Thus data providers need to firstly decide how to distribute data product into MAM channels. While the creation of a MAM channel is time-consuming, brokers are also responsible for channel creation, encrypted data publishing and session key certification in our system. See Figure \ref{fig:launching_product}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3.3 in]{launching_product}
+    \caption{The process of launching a product.}
+    \label{fig:launching_product}
+\end{figure}
+
+\item \textbf{TangleID: }
+The TangleID\cite{TangleID} is a self-sovereign identity system based on IOTA that do not require any third-party authority to verify an identity and its digital footprint. With TangleID, the digital footprint is converted into digital assets under the principle of Decentralized Identifiers (DIDs)\cite{DID} defined by W3C. Posting DID documents on MAM makes TangleID a GDPR-Complianced system. Every participant in the data marketplace registers on TangleID, hence one can easily verify data providers' identity to ensure the data persistency from data sources.
+
+\item \textbf{Ethereum Smart Contract: }
+Smart contract is a protocol for formulating agreement on a blockchain that provides verification and execution of the contract. The code in the smart contract can interact with other contracts, make decisions, store data and transfer cryptocurrency. All conditions and states established in the contract are transparent and with enforcement. The appearance of smart contracts makes trading more flexible, and achieves more complex trading patterns in reality.
+
+\item \textbf{Blind Signature}
+There is inherent risk in revealing session keys to brokers since contents may be copied by brokers, which would result in data providers' losses. Therefore, a blind signature is used to prevent session key copying for such circumstances. Blind signature\cite{blindSig} is a form of digital signature where the message is first "blinded" by a random "blinding factor", then passed to a signer to sign. The resulting message, along with the blinding factor, can be later verified with the signer's public key. In our system design, brokers would perform blind signatures during the process of adding new products for data providers, in order to send the secret key of the MAM channel to the smart contract without knowing it.
+
+\item \textbf{IPFS}
+Inter-Planetary File system(IPFS)\cite{IPFS} is a peer-to-peer network for storing and accessing files, websites, applications, and data in a distributed file system which is not maintained with certain nodes or entities but is with all IPFS users. In our proposed architecture, brokers are responsible to publish the metadata of products, including title, data provider information and data preview to the IPFS in order to provide users with search capabilities to meet the consumers' need.
+\end{itemize}
+
+\subsection{Trading Model}
+In the following, we describe the data trading process in detail where we use game theory to ensure the sustainability of our trading model. To participate a data marketplace, data providers and consumers have to register first. Then data provider can launch its product on the marketplace. Once a product is launched, it is searchable and can be subsequently traded. The whole trading and refunding process is defined in smart contracts which are easily traceable and irreversible.
+
+The consumer will pay for the data, only when the data sold by the data provider sufficiently accurate, for which we called such data "decent data."
+Once the accuracy is lower than a certain threshold, which we call "unacceptable data," the consumers would then consider this data provider as a low quality data provider, and stop buying data from this data provider.
+
+Refunds are a major issue in our research. However, we do not need to take refund as a factor in our game theory model, since in our decentralized data marketplace we use a smart contract to store the subscription fee which will be paid to buy the future data. The subscription fee will be paid as new data is transmitted to consumers. In other words, the data provider does not need to perform any procedures to transfer subscription fees from his/her own account to consumers' accounts. For the same reason, data providers have no responsibility on refunding processing fees charged by the smart contract.
+
+\subsubsection{Participant Registration}
+At the beginning, the egistrar creates a registration contract, which maintains all participants' information, including their DID documents and public keys. Anyone can query participants' public keys. Those who would like to sell or purchase data may register to become a data provider or consumer. The registrar has the authority to agree with applications. After that, their identities are available in the registration contract and the launching and trading processes can begin.
+
+\subsubsection{Launching and Searching Products}
+To sell streaming data, a data provider needs to launch a new product on the data marketplace in advance as shown in Figure \ref{fig:launching_product}. The data provider determines a trusted broker and asks the broker to create a new MAM channel and product contract. Each product has a product contract to record the participants, subscription price brokerage fee, quantity of data and  trading process.
+
+Brokers certify session keys as well. Only one session key can be signed in each product, so data providers cannot fake a session key to deceive consumers. Figure \ref{fig:key_certification} shows the certification process. When a data provider asks a broker to certify new session key $k$, the data provider uses the broker's public key, which is available in the Registration Contract after the broker's registration, as a blinding factor, and the session key is blinded. Then the data provider sends the blinded session key $Blind(k)$ to the broker. The broker signs the message and returns the signature $Sign(Blind(k))$ to data provider. The data provider removes the blinding factor and obtains the broker's signature of the session key, $Sign(k)$, which is verifiable by consumers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3.3 in]{key_certification}
+    \caption{Session key certification process with blind signature.}
+    \label{fig:key_certification}
+\end{figure}
+
+The contract address and product description will be stored in a file which is uploaded to IPFS. Consumers can search the desired product by keywords or tags. The consumer then evaluates the product and initiates the trading with the data provider if the consumer is interested in subscribing to the data.
+
+\subsubsection{Trading}
+The entire trading process is as shown in Figure \ref{fig:trading_product}. Once a consumer who wants to subscribe certain streaming data that is generated  pays a subscription fee to the product contract, he/she is added to the consumers list automatically by the smart contract.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=2 cm]{trading_product}
+    \caption{The process for the product trading.}
+    \label{fig:trading_product}
+\end{figure}
+
+Next, session key $k$ should be exchanged between the data provider and consumers as shown in Figure \ref{fig:key_exchange}. The data provider can obtain public keys of each consumer from the registration contract. For each consumer, the data provider encrypts the session key and broker's signature with the consumer's public key and sends the ciphertext $Encrypt(k + Sign(k))$ to the product contract. Consumers listen to the smart contract event which is triggered when the ciphertext is updated, and decrypt the ciphertext to obtain the session key $k$ and signature $Sign(k)$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3.3 in]{key_exchange}
+    \caption{Session key exchange process between the data provider and consumer.}
+    \label{fig:key_exchange}
+\end{figure}
+
+Consumers can obtain the broker's public key on the registration contract as well, so they can verify that the signature is valid and the session key is the only one that is certified by the broker. Afterward, encrypted data is published to the MAM channel, and consumers can obtain and decrypt it with the session key.
+
+\subsubsection{Refunding}
+It is probable that the streaming data sources are delayed or even interrupted after the consumers pay the subscription fee. To protect consumer rights, the subscription fee are not transferred to the data provider until data is generated and published to the MAM channel. If the expected data is not available, consumers can request refunds. We assume that a very small percentage of consumers in the product contract are irrational and/or malicious. Each consumer can vote for a refund at any time. If the ratio of consent votes of refunding is higher than the $threshold$ at the $i$th piece of data, the subscription fee is proportionally transferred to the data provider, broker and every consumer. The subscription fee can be prorated as below:
+
+\begin{equation}
+    F_{DataProvider}(i) = N price \frac{i-1}{M} (1-F_{b}) -F_{t}
+\end{equation}
+
+\begin{equation}
+    F_{Broker}(i) = N price \frac{i-1}{M} F_{b} -F_{t}
+\end{equation}
+
+\begin{equation}
+    F_{Consumer}(i) = price \frac{M-i+1}{M} -F_{t}
+\end{equation}
+
+where $price$  is the subscription price, $M$ is the number of expected data samples, $F_{b}$ (\%) is the brokerage fee which is expressed as a percentage, $F_{t}$ is the transaction fee of the smart contract, $N$ is the number of consumers in this contract.
+
+To refund or withdraw subscription fees from the smart contract, the data provider, broker, and consumer send a transaction to execute the smart contract and are responsible for the transaction fee. We assume that only a half of the expected records are published to the MAM channel. When $F_{b}$ is 5\%, the data provider and broker can withdraw half of the total subscription fee from the smart contract and 5\% of the subscription fee belongs to the broker while the remaining belongs to the data provider. For consumers, they can receive half of the subscription fee refunded which should be deducted from the transaction fee.
+
+Considering the situation that one of the consumers requests a refund in the future, when the consumer is disappointed with the data quality, he/she may request a refund.
+
+\subsubsection{Game Theory Evaluation}
+Game Theory is a methodology to discuss strategic interaciton among game players. If we can ensure Nash Equilibrium of decentralized data marketplace exists at a certain acceptable range, then we can promise the sustainability of decentralized data marketplace. Fan Liang et al\cite{SurveyBigDataPricing} listed several different types of game theory models which are applied to data pricing. We employed repeated games to build our game theory model. Repeated games consists of several repetitions of the same base game which meets the scenario of data subscription.
+
+Figure.\ref{fig:decision_tree} shows the decision tree to depict the repeated game we used. Each level in this decision tree represents each round of data transmission from data provider to consumers, and the consumers would pay subscription fee, $p_s$, for each person. The sum of all the subscription fee paid to the data provider is denoted as $P_s$.
+
+\begin{figure}[H] \centering \includegraphics[width=3.3 in]{decision_tree} \caption{Decision Tree}
+    \label{fig:decision_tree} \end{figure}
+For every $n$ round, the data provider would pay $C_{maintain}$ to enhance the sensors that the data provider owns. We call this a maintenance period. Moreover, the value of data and the cost of maintenance will decrease as time passes, so we introduce a discounted factor $\beta$ to depict this phenomena.
+
+Following assumptions are made:
+\begin{enumerate}
+    \item  We assume consumers are rational. \label{rational_man}
+    \item  Each data provider is the sole provider of the product they produced. \label{monopoly}
+    \item  Subscription fees only depends on data quality. \label{fee_vs_quality}
+    \item  At least 51\% of consumers are in the same group which has complete information exchange.\label{51_in_group}
+    \item  One of the consumers who has complete information exchange with other 51\% buyers has the ability to examine  data quality. \label{1_in_51}
+\end{enumerate}
+
+According to \textbf{assumption(\ref{rational_man})}, we learn that few consumers would take malicious actions in this system, since all the consumers are rational.
+
+\textbf{Assumption(\ref{monopoly})} implies there is no other data providers providing the same product in the data marketplace. In this way, we can consider each provider's behavior independently. That means this decision tree represents the behavior of only one data provider.
+
+From \textbf{assumption(\ref{51_in_group})}, we derive that one of any consumer in that group launches voting for stopping buying data (in other words, the consumer announces the data quality is not acceptable), they would succeed in rejecting the processing subscription.
+
+\textbf{Assumption(\ref{1_in_51})}  implies if unacceptably low accuracy data are delivered to consumers, the examiner will spread this information out.
+
+
+Based on the description above, the discounted sum of payoff for our repeated game is
+\begin{equation} \label{payoff}
+    \sum_{i=0}^{m - 1}{\beta^{in}\cdot [(\sum_{j=0}^{n - 1} \beta^j \cdot P_s) - C_{maintain}]}
+\end{equation}
+
+Al-Fagih et al. presented\cite{DataPrice} $P_s$ is sigmoid function of $P_r$, and based on rule of thumb $C_{maintain}$ is approximately an exponential function of $P_r$. We can substitute $P_s$ and $C_{maintain}$ with $P_r$ into Eq. (\ref{payoff}), then we can find out the Nash Equilibrium of repeated game.
+
+\subsubsection{Numerical Example}
+To evaluate the behavior of the model we presented, first, we would express the function of $P_s$ and $C_{maintain}$ as functions of $P_r$ respectively. Therefore, the sum of subscription fee of all subscriber can be expressed as
+
+\begin{equation} \label{sub_fee}
+    P_s = R \frac{e^{a (P_r - b)}}{1 + e^{a (P_r - b)}}
+\end{equation}
+
+where $a$ and $b$ are tuning factors, and $R$ is the maximum data value.
+And we would express the cost of maintenance as
+
+\begin{equation} \label{C_mtn}
+    C_{maintain} = ce^{P_r - d}
+\end{equation}
+Where $c$ and $d$ are tuning factors.
+
+Substitute Eq. (\ref{sub_fee}) and Eq. (\ref{C_mtn}) into Eq. (\ref{payoff}). We can derive
+\begin{equation} \label{payoff_Pr}
+    \sum_{i=0}^{m - 1}{\beta^{in}\cdot [(\sum_{j=0}^{n - 1} \beta^j \cdot R \frac{e^{a (P_r - b)}}{1 + e^{a (P_r - b)}}) - ce^{P_r - d}]}
+\end{equation}
+
+Let tuning factors $, a = 0.15, b = 50, R = 10000, c = 1, d = 88$, and only one maintenance period has occured and one maintenance period consists of 12 rounds which means $m = 1, n = 12$. Based on these parameters, we can plot the payoff function as a function of accuracy, $Pr$ which is Figure.\ref{fig:payoff_pic}. The maximum point occurs at $accuracy \approx 92\%$ which is indicated with a red dot.
+\begin{figure}[H] \centering \includegraphics[width=3.3 in]{payoff_pic} \caption{Payoff Function}
+    \label{fig:payoff_pic} \end{figure}
+
+Figure.\ref{fig:payoff_pic} illustrates the market mechanism of the subscription trading policy we used under the decentralized data marketplace. First, data providers have weak motivation to operate their sensor in low accuracy, since the incentive of low quality data is much less than moderate quality data. Second the great deficit at high accuracy is mostly derived by the rapid increasing of maintenance cost. Thus, if the maintenance fee to achieve decent data quality is under a fair price range, then data provider will automatically provide data with high enough data quality under our assumptions.
+
+
+\section{Results}
+
+This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
+\begin{quote}
+This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
+\end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Bulleted lists look like this:
+%\begin{itemize}[leftmargin=*,labelsep=5.8mm]
+%Numbered lists can be added as follows:
+%\begin{enumerate}[leftmargin=*,labelsep=4.9mm]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+
+%Data Auction
+The data auction process is a data trading mechanism and an economically-driven scheme that establishes corresponding prices of data products through bidding process between consumers and providers. While there has been many auction models\cite{BigPicDataMarket} in several areas, there has been minimal research on third-party auction platforms. Our proposed decentralized data marketplace protects the privacy of participants which reveals the minimum information for validation and reduces the suspicion of trust to centralized parties or auctioneers. However, the auction process between multiple participants and analysis of potential threats are still critical issues that need to be resolved. For the game theory model presented in this work, we assume each data provider's behavior is independent. However, normally there would be multiple data providers providing similar products (substitutions). Only one provider is taken into considerations at present.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\reftitle{References}
+
+% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
+% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+\externalbibliography{yes}
+\bibliography{references}
+
+%=====================================
+% References, variant B: internal bibliography
+%=====================================
+%\begin{thebibliography}{999}
+%\bibliography{references}
+% Reference 1
+%\bibitem[Author1(year)]{ref-journal}
+%Author1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
+% Reference 2
+%\bibitem[Author2(year)]{ref-book}
+%Author2, L. The title of the cited contribution. In {\em The Book Title}; Editor1, F., Editor2, A., Eds.; %Publishing House: City, Country, 2007; pp. 32--58.
+%\end{thebibliography}
+
+% The following MDPI journals use author-date citation: Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
+% To cite two works by the same author: \citeauthor{ref-journal-1a} (\citeyear{ref-journal-1a}, \citeyear{ref-journal-1b}). This produces: Whittaker (1967, 1975)
+% To cite two works by the same author with specific pages: \citeauthor{ref-journal-3a} (\citeyear{ref-journal-3a}, p. 328; \citeyear{ref-journal-3b}, p.475). This produces: Wong (1999, p. 328; 2000, p. 475)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+%\sampleavailability{Samples of the compounds ...... are available from the authors.}
+
+%% for journal Sci
+%\reviewreports{\\
+%Reviewer 1 comments and authors’ response\\
+%Reviewer 2 comments and authors’ response\\
+%Reviewer 3 comments and authors’ response
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
