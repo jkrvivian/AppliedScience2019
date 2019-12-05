@@ -230,6 +230,26 @@ Smart contract is a protocol for formulating agreement on a blockchain that prov
 \item \textbf{Blind Signature}
 There is inherent risk in revealing session keys to brokers since contents may be copied by brokers, which would result in data providers' losses. Therefore, a blind signature is used to prevent session key copying for such circumstances. Blind signature\cite{blindSig} is a form of digital signature where the message is first "blinded" by a random "blinding factor", then passed to a signer to sign. The resulting message, along with the blinding factor, can be later verified with the signer's public key. In our system design, brokers would perform blind signatures during the process of adding new products for data providers, in order to send the secret key of the MAM channel to the smart contract without knowing it.
 
+RSA blind signature\cite{cryptoNote} is used in our research. The data provider chooses a random number $r$ as a blinding factor. $e$ is the broker's public key. To prevent the message from being known by the broker, the data provider sends blinding message $c$ to the broker instead of $m$.
+
+\begin{equation}
+C = r^e m
+\end{equation}
+
+The broker signs the blinding message with his private key $d$.
+
+\begin{equation}
+S = C^d
+\end{equation}
+
+$S$ is the broker's signature of $C$. In RSA system, $ed$ is equal to 1. To remove the blind factor, the data provider computes the following calculation.
+
+\begin{equation}
+\frac{S}{r}= \frac{C^d}{r} = \frac{(r^e m)^d}{r} = \frac{r^{ed} m^d}{r} = m^d
+\end{equation}
+ 
+The data provider get $m^d$ which is the broker's signature of the message $m$. At the same time, the broker does not know $m$ and the session key is protected. 
+
 \item \textbf{IPFS}
 Inter-Planetary File system(IPFS)\cite{IPFS} is a peer-to-peer network for storing and accessing files, websites, applications, and data in a distributed file system which is not maintained with certain nodes or entities but is with all IPFS users. In our proposed architecture, brokers are responsible to publish the metadata of products, including title, data provider information and data preview to the IPFS in order to provide users with search capabilities to meet the consumers' need.
 \end{itemize}
