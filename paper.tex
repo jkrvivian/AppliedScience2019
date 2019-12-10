@@ -243,7 +243,7 @@ The broker signs the blinding message with his private key $d$.
 S = C^d
 \end{equation}
 
-$S$ is the broker's signature of $C$. In RSA system, $ed$ is equal to 1. To remove the blind factor, the data provider computes the following calculation.
+$S$ is the broker's signature of $C$. In RSA system, $ed$ is equal to 1. To remove the blinding factor, the data provider computes the following calculation.
 
 \begin{equation}
 \frac{S}{r}= \frac{C^d}{r} = \frac{(r^e m)^d}{r} = \frac{r^{ed} m^d}{r} = m^d
@@ -461,7 +461,7 @@ To create a Product Contract, the broker publishes the address of the data provi
 	}
 \end{lstlisting}
 
-Before a data provider asks a broker to certify a session key, he blinds the session key first. The blinded session key is published to the smart contract by calling $addBlindedKey()$. Also the broker should use $addSignedBlindedKey()$ to publish the signature. As a result, the key certification process is recorded on the smart contract which is traceable afterward. By the way, it is hard for an attacker to compute the session key by blinding messages and signatures on smart contracts.
+Before a data provider asks a broker to certify a session key, he blinds the session key first. The blinded session key is published to the smart contract by calling $addBlindedKey()$. Also the broker should use $addSignedBlindedKey()$ to publish the signature. As a result, the key certification process is recorded on the smart contract which is traceable afterward. By the way, it is hard for an attacker to compute the session key with blinding messages and signatures on smart contracts.
 
 \begin{lstlisting}[caption={update encrypt key}, label={lst:key_exchange}, frame=single]
 	function addEncryptKey(
@@ -501,7 +501,7 @@ The data provider encrypts the session key and broker's signature with the consu
 	\end{tabular}
 \end{table}
 
-Table \ref{tab:gas} shows the gas usage for each function. Creating a smart contract (Listing \ref{lst:constructor} ) costs the most gas, and functions (Listing \ref{lst:key_certification} and Listing \ref{lst:key_exchange}) that are related to key certification and key exchange need a lot of gas as well. Storage on blockchain costs a lot. It is expensive to use memory in Solidity. For instance, an SSTORE operation may cost 20000 gas when the value is set to non-zero from zero\cite{Ethereum} according to Ethereum Yellow Paper. Smart contract initialization, storing ciphertexts and signatures during key certification and key exchange needs a lot of operations and storages which causes high gas consumption. On the other hand, we can observe that the broker is responsible for the most part of transaction fees while consumers only need to send one transaction to subscribe the product if they don't have to refund.
+Table \ref{tab:gas} shows the gas usage for each function. Creating a smart contract (Listing \ref{lst:constructor} ) costs the most gas, and functions (Listing \ref{lst:key_certification} and Listing \ref{lst:key_exchange}) that are related to key certification and key exchange need a lot of gas as well. Storage on blockchain costs a lot. It is expensive to use memory in Solidity. For instance, an SSTORE operation may cost 20000 gas when the value is set to non-zero from zero according to Ethereum Yellow Paper\cite{Ethereum}. Smart contract initialization, storing ciphertexts and signatures during key certification and key exchange needs a lot of operations and storages which causes high gas consumption. On the other hand, we can observe that the broker is responsible for the most part of transaction fees while consumers only need to send one transaction to subscribe the product if they don't have to refund.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Bulleted lists look like this:
