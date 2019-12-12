@@ -309,7 +309,17 @@ Next, session key $k$ should be exchanged between the data provider and consumer
 Consumers can obtain the broker's public key on the registration contract as well, so they can verify that the signature is valid and the session key is the only one that is certified by the broker. Afterward, encrypted data is published to the MAM channel, and consumers can obtain and decrypt it with the session key.
 
 \subsubsection{Refunding}
-It is probable that the streaming data sources are delayed or even interrupted after the consumers pay the subscription fee. To protect consumer rights, the subscription fee are not transferred to the data provider until data is generated and published to the MAM channel. If the expected data is not available, consumers can request refunds. We assume that a very small percentage of consumers in the product contract are irrational and/or malicious. Each consumer can vote for a refund at any time. If the ratio of consent votes of refunding is higher than the $threshold$ at the $i$th piece of data, the subscription fee is proportionally transferred to the data provider, broker and every consumer. The subscription fee can be prorated as below:
+
+It is probable that the streaming data sources are delayed or even interrupted after the consumers pay the subscription fee. To protect consumer rights, the subscription fee are not transferred to the data provider until data is generated and published to the MAM channel. If the expected data is not available, consumers can request refunds. We assume that a very small percentage of consumers in the product contract are irrational and/or malicious. Each consumer can vote for a refund at any time. If the ratio of consent votes of refunding is higher than the $threshold$ at the $i$th piece of data, the subscription fee is proportionally transferred to the data provider, broker and every consumer. Figure \ref{fig:refund} shows the refund process.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=2 in]{refund}
+	\caption{The process of the refunding.}
+	\label{fig:refund}
+\end{figure}
+
+The subscription fee can be prorated as below:
 
 \begin{equation}
     F_{DataProvider}(i) = N price \frac{i-1}{M} (1-F_{b}) -F_{t}
