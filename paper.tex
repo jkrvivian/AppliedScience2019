@@ -169,7 +169,7 @@ As the economic value of huge amounts of data emerges, several researchers have 
 
 Data Integrity as a Service (DIaaS) is a blockchain based framework for data integrity proposed by Liu et al.\cite{DIaas} which is a Cloud Server Service (CSS) that allows both data provider and consumer to validate data integrity by comparing hashes on Ethereum smart contracts\cite{smartContract} and cloud servers. Moreover, Ethereum smart contract can also realize the purchase agreement, including authorization and penalization. However, the architecture of DIaaS needs high trust on the CSS. If the CSS is malicious or has crashed, losses to both providers and consumers will result. Also, performance analysis shows that IoT devices have low efficiency interactions with Ethereum due to the time-consuming Proof-of-Work(PoW) process.
 
-To address the inefficiency of the Blockchain, \textbf{IOTA}\cite{IOTAwhitepaper} is a cryptocurrency for the IoT industry based on a revolutionary distributed ledger technology, the \textbf{Tangle}, which creates the potential for feeless transactions between users and statistically indefinite network scalability. On top of that, \textbf{Masked Authenticated Messaging(MAM)}\cite{MAM}, is provided for a second layer data communication protocol which allows transmission, access, and verification of an encrypted data stream over the Tangle where privacy and integrity meet.
+To address the inefficiency of the Blockchain, \textbf{IOTA}\cite{IOTAwhitepaper} is a cryptocurrency for the IoT industry based on a revolutionary distributed ledger technology, the \textbf{Tangle}, which creates the potential for feeless transactions between users and statistically indefinite network scalability. On top of that, \textbf{Masked Authenticated Messaging(MAM)}\cite{MAM}\cite{MAMSpec}\cite{MAMDescription}, is provided for a second layer data communication protocol which allows transmission, access, and verification of an encrypted data stream over the Tangle where privacy and integrity meet.
 
 Based on Tangle and MAM, the IOTA foundation launched a data marketplace\cite{IOTADataMarket} which is suitable for IoT streaming data that not only allows data providers to put data on Tangle without any trusted cloud services, but also allow providers and consumers to trade on Tangle with privacy protection and assurance of data integrity from the source with MAM. Nevertheless, the platform design is centralized, where new devices require manual approval from the IOTA foundation to be visible in the marketplace. Also, interacting with Tangle is still the bottleneck for low-level devices especially in an unstable network or electrically noisy environment.
 
@@ -206,12 +206,29 @@ Brokers represent data providers and consumers to perform computing tasks as bro
 \subsubsection{Components}
 \begin{itemize}[leftmargin=*,labelsep=5.8mm]
 \item \textbf{Mask Authenticated Messaging: }
-IOTA\cite{IOTAwhitepaper} is a feeless and scalable cryptocurrency while MAM is the second layer data communication protocol built on top of Tangle.
+IOTA\cite{IOTAwhitepaper} is a feeless and scalable cryptocurrency while MAM is the second layer data communication protocol built on top of the IOTA network, the Tangle. MAM resolves the challenge of publishing authenticated streaming data as zero-value transactions to distributed ledgers, and allows access control of the data through encryption keys. 
 
-MAM resolves the challenge to publish encrypted streaming data to distributed ledgers. It publishes messages encrypted with a \textbf{session key} to the \textbf{channel}, which is a form of transaction where each address can be derived from the previous one. Therefore, with each \textbf{channel root}—the first message of a channel and the session key—all data on the channel is accessible.
+In IOTA protocol, seed is the identifier of its owner. An IOTA seed represents the ownership of all things associated with the user in the IOTA ecosystem, such as IOTA tokens or messages on the Tangle. With the seed, the owner can produce addresses and signatures in order to issue transactions or publish messages to MAM channels and endpoints.
 
-One can create multiple channels, however, the size of a channel is fixed which is decided before creation. Thus data providers need to firstly decide how to distribute data product into MAM channels. While the creation of a MAM channel is time-consuming, brokers are also responsible for channel creation, encrypted data publishing and session key certification in our system. See Figure \ref{fig:launching_product}
+Either channel or endpoint is like singly-linked list. The MAM channel's ID and endpoint's ID are the addresses of transaction and are the root of a channel and endpoint. Each address of a message can be derived from the previous one. A user can create multiple channels and multiple endpoints under the same channel. The messages can be encrypted with the session key and broadcasted in chronological order to the Tangle by attaching it to an endpoint. This allows only entities that know the session key can decode these messages after retrieving it from the Tangle, and also implements the concept of forward secrecy, where one have no access to the data back from his/hers entry point. Figure \ref{fig:mam_struct} shows the architecture of MAM.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3.3 in]{mam_struct}
+    \caption{The concept of MAM.}
+    \label{fig:mam_struct}
+\end{figure}
+
+The authentication in MAM includes source and data authentication. Source authentication ensures that the message originates from the claimed owner, and data authentication ensures the integrity of the data from that sender. These are achieved through Merkle signature scheme which is a digital signature scheme based on Merkle Hash Trees and One-way hash functions. However, the size of Merkle Hash Trees should be fixed at start, which is the size of a channel and endpoint is decided before creation. Thus data providers need to firstly decide how to distribute data product into MAM channels or endpoints.
+
+% interaction between provider
+Data provider is the main role to interact with MAM. With a seed, a provider can start creating a channel or endpoint. As above mentioned, the length of a channel and an endpoint is fixed, thus providers need to decide the selling unit of data products according to its data type or pricing strategy. Also data providers can a make product preview which is public and not encrypted on MAM. In Figure \ref{fig:mam_struct}, a "central endpoint" means its endpoint's ID is the same as channel's ID. By attaching part of the product to central endpoint can give consumers a quick preview with channel's ID only. Then if the trade establishes, providers can then give consumers the encrypted endpoint and session key to consumers. After retrieving the messages on endpoints, users can easily verify the content with digital signatures included in messages. 
+
+% why MAM
+MAM is considered as the most important fundamental building block in the proposed system. The decentralized and fault-tolerant charactaristic of distributed ledgers reduce the risks of centralized storage services, and the underlying IOTA network is scalable which withstands real-time data while increasing users all over the world. Moreover, the features of MAM makes it an even better data storage which allows preserving streaming data while ensuring data integrity, proving data ownership to any participants and managing session keys of data. And through the access control and the desing of channel, endpoint of MAM, participants are allowed to subscribe the future data.  
+
+% efficiency problem of MAM
+While the operations of MAM time-consuming, brokers are responsible not only for being the bridge of providers and consumers but for all MAM related operations, such as channel creation and encrypted data publishing in our system. See Figure \ref{fig:launching_product}
 
 \begin{figure}[H]
     \centering
