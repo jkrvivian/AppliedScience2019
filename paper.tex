@@ -245,27 +245,34 @@ The TangleID\cite{TangleID} is a self-sovereign identity system based on IOTA th
 Smart contract is a protocol for formulating agreement on a blockchain that provides verification and execution of the contract. The code in the smart contract can interact with other contracts, make decisions, store data and transfer cryptocurrency. All conditions and states established in the contract are transparent and with enforcement. The appearance of smart contracts makes trading more flexible, and achieves more complex trading patterns in reality.
 
 \item \textbf{Blind Signature}
-There is inherent risk in revealing session keys to brokers since contents may be copied by brokers, which would result in data providers' losses. Therefore, a blind signature is used to prevent session key copying for such circumstances. Blind signature\cite{blindSig} is a form of digital signature where the message is first "blinded" by a random "blinding factor", then passed to a signer to sign. The resulting message, along with the blinding factor, can be later verified with the signer's public key. In our system design, brokers would perform blind signatures during the process of adding new products for data providers, in order to send the secret key of the MAM channel to the smart contract without knowing it.
+There is an inherent risk in revealing session keys to brokers since contents may be copied by brokers, which would result in data providers' losses. Therefore, a blind signature is used to prevent session key copying for such circumstances. Blind signature\cite{blindSig} is a form of digital signature where the message is first "blinded" by a random "blinding factor", then passed to a signer to sign. Figure \ref{fig:blind_signature} illustrates the steps of blind signature. The resulting message, along with the blinding factor, can be later verified with the signer's public key. In our system design, brokers would perform blind signatures during the process of adding new products for data providers, in order to send the secret key of the MAM channel to the smart contract without knowing it.
 
-RSA blind signature\cite{cryptoNote} is used in our research. The data provider chooses a random number $r$ as a blinding factor. $e$ is the broker's public key. To prevent the message $m$ from being known by the broker, the data provider sends blinding message $c$ to the broker instead of $m$.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=3.3 in]{blind_signature}
+	\caption{The scheme of blind signature.}
+	\label{fig:blind_signature}
+\end{figure}
+
+RSA blind signature\cite{cryptoNote} is used in our research. The user chooses a random number $r$ and uses the signer's public key $e$ to generate a blinding factor $r^e$. To prevent the message $m$ from being known by the signer, the user sends blinding message $c$ to the signer instead of $m$.
 
 \begin{equation}
 C = r^e m
 \end{equation}
 
-The broker signs the blinding message with his private key $d$.
+The signer signs the blinding message with his private key $d$.
 
 \begin{equation}
 S = C^d
 \end{equation}
 
-$S$ is the broker's signature of $C$. In RSA system, $ed$ is equal to 1. To remove the blinding factor, the data provider computes the following calculation.
+$S$ is the signer's signature of $C$. In RSA system, $ed$ is equal to 1. To remove the blinding factor, the user computes the following calculation.
 
 \begin{equation}
 \frac{S}{r}= \frac{C^d}{r} = \frac{(r^e m)^d}{r} = \frac{r^{ed} m^d}{r} = m^d
 \end{equation}
  
-The data provider get $m^d$ which is the broker's signature of the message $m$. At the same time, the broker does not know $m$ and the session key is protected. 
+The user gets $m^d$ which is the signer's signature of the message $m$. At the same time, the signer does not know $m$ and the session key is protected. 
 
 \item \textbf{IPFS}
 Inter-Planetary File system(IPFS)\cite{IPFS} is a peer-to-peer network for storing and accessing files, websites, applications, and data in a distributed file system which is not maintained with certain nodes or entities but is with all IPFS users. In our proposed architecture, brokers are responsible to publish the metadata of products, including title, data provider information and data preview to the IPFS in order to provide users with search capabilities to meet the consumers' need.
@@ -318,7 +325,17 @@ Next, session key $k$ should be exchanged between the data provider and consumer
 Consumers can obtain the broker's public key on the registration contract as well, so they can verify that the signature is valid and the session key is the only one that is certified by the broker. Afterward, encrypted data is published to the MAM channel, and consumers can obtain and decrypt it with the session key.
 
 \subsubsection{Refunding}
-It is probable that the streaming data sources are delayed or even interrupted after the consumers pay the subscription fee. To protect consumer rights, the subscription fee are not transferred to the data provider until data is generated and published to the MAM channel. If the expected data is not available, consumers can request refunds. We assume that a very small percentage of consumers in the product contract are irrational and/or malicious. Each consumer can vote for a refund at any time. If the ratio of consent votes of refunding is higher than the $threshold$ at the $i$th piece of data, the subscription fee is proportionally transferred to the data provider, broker and every consumer. The subscription fee can be prorated as below:
+
+It is probable that the streaming data sources are delayed or even interrupted after the consumers pay the subscription fee. To protect consumer rights, the subscription fee are not transferred to the data provider until data is generated and published to the MAM channel. If the expected data is not available, consumers can request refunds. We assume that a very small percentage of consumers in the product contract are irrational and/or malicious. When a consumer consents to refund, he can vote at any time. After the ratio of consent votes of refunding is higher than the $threshold$, the subscription fee is proportionally transferred to the data provider, broker and every consumer. Figure \ref{fig:refund} shows the refund process.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=2 in]{refund}
+	\caption{The process of refund.}
+	\label{fig:refund}
+\end{figure}
+
+The subscription fee can be prorated as below:
 
 \begin{equation}
     F_{DataProvider}(i) = N price \frac{i-1}{M} (1-F_{b}) -F_{t}
@@ -332,7 +349,7 @@ It is probable that the streaming data sources are delayed or even interrupted a
     F_{Consumer}(i) = price \frac{M-i+1}{M} -F_{t}
 \end{equation}
 
-where $price$  is the subscription price, $M$ is the number of expected data samples, $F_{b}$ (\%) is the brokerage fee which is expressed as a percentage, $F_{t}$ is the transaction fee of the smart contract, $N$ is the number of consumers in this contract.
+where $i$ is the number of data when refunding condition is met, $price$  is the subscription price, $M$ is the number of expected data samples, $F_{b}$ (\%) is the brokerage fee which is expressed as a percentage, $F_{t}$ is the transaction fee of the smart contract, $N$ is the number of consumers in this contract.
 
 To refund or withdraw subscription fees from the smart contract, the data provider, broker, and consumer send a transaction to execute the smart contract and are responsible for the transaction fee. We assume that only a half of the expected records are published to the MAM channel. When $F_{b}$ is 5\%, the data provider and broker can withdraw half of the total subscription fee from the smart contract and 5\% of the subscription fee belongs to the broker while the remaining belongs to the data provider. For consumers, they can receive half of the subscription fee refunded which should be deducted from the transaction fee.
 
