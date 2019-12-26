@@ -296,7 +296,7 @@ Brokers certify session keys as well. Only one session key can be signed in each
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=3.3 in]{key_certification}
+    \includegraphics[width=6 in]{key_certification}
     \caption{Session key certification process with blind signature.}
     \label{fig:key_certification}
 \end{figure}
@@ -313,11 +313,32 @@ The entire trading process is as shown in Figure \ref{fig:trading_product}. Once
     \label{fig:trading_product}
 \end{figure}
 
-Next, session key $k$ should be exchanged between the data provider and consumers as shown in Figure \ref{fig:key_exchange}. The data provider can obtain public keys of each consumer from the registration contract. For each consumer, the data provider encrypts the session key and broker's signature with the consumer's public key and sends the ciphertext $Encrypt(k + Sign(k))$ to the product contract. Consumers listen to the smart contract event which is triggered when the ciphertext is updated, and decrypt the ciphertext to obtain the session key $k$ and signature $Sign(k)$.
+Next, session key $k$ should be exchanged between the data provider and consumers. To exchange data, Azaria et al\cite{Medrec} seek an off-chain solution which uses an end-to-end communication that is efficient and low-cost. However, it is hard to avoid that the data source is unavailable or the sender sends incorrect data intentionally. Instead of using off-chain solution, we use smart contract to transfer the session key\cite{3tierDataMarket} that not only ensures the consistency of the session key, the availability of the source and the traceability of the record, but also prevents malicious participants to cheat others.
+
+\begin{lstlisting}[caption={update encrypt key}, label={lst:key_exchange}, frame=single]
+    function addEncryptKey(
+        address _consumer,
+        string memory _encryptKey
+    ) public {
+        require(
+            msg.sender == provider,
+            "Only provider can add blindedKey."
+        );
+        require(
+            consumer2Purchase[_consumer].isKeyAdded == false,
+            "One encryptKey has been added."
+        );
+        consumer2Purchase[_consumer].encryptKey = _encryptKey;
+        consumer2Purchase[_consumer].isKeyAdded = true;
+        emit newEncryptKey(_consumer, _encryptKey);
+    }
+\end{lstlisting}
+
+The trading process is shown in Figure \ref{fig:key_exchange}. The data provider can obtain public keys of each consumer from the registration contract. For each consumer, the data provider encrypts the session key and broker's signature with the consumer's public key and sends the ciphertext $Encrypt(k + Sign(k))$ to the product contract by calling $addEncryptKey()$ \ref{lst:key_exchange}. Consumers listen to the $newEncryptKey$ event which is triggered when the ciphertext is updated, and decrypt the ciphertext to obtain the session key $k$ and signature $Sign(k)$.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=3.3 in]{key_exchange}
+    \includegraphics[width=6 in]{key_exchange}
     \caption{Session key exchange process between the data provider and consumer.}
     \label{fig:key_exchange}
 \end{figure}
@@ -454,7 +475,7 @@ In this experiment, we investigate the cost of executing smart contracts. We imp
 	}
 \end{lstlisting}
 
-To create a Product Contract, the broker publishes the address of the data provider, subscription fee, brokerage fee, threshold of consent votes of refunding, the channel root and endpoint of MAM channel, and expected number of streaming data.
+To create a Product Contract\ref{lst:constructor}, the broker publishes the address of the data provider, subscription fee, brokerage fee, threshold of consent votes of refunding, the channel root and endpoint of MAM channel, and expected number of streaming data.
 
 \begin{lstlisting}[caption={update blinded key and update signature}, label={lst:key_certification}, frame=single]
 	function addBlindedKey(
@@ -489,28 +510,7 @@ To create a Product Contract, the broker publishes the address of the data provi
 	}
 \end{lstlisting}
 
-Before a data provider asks a broker to certify a session key, he blinds the session key first. The blinded session key is published to the smart contract by calling $addBlindedKey()$. Also the broker should use $addSignedBlindedKey()$ to publish the signature. As a result, the key certification process is recorded on the smart contract which is traceable afterward. By the way, it is hard for an attacker to compute the session key with blinding messages and signatures on smart contracts.
-
-\begin{lstlisting}[caption={update encrypt key}, label={lst:key_exchange}, frame=single]
-	function addEncryptKey(
-		address _consumer,
-		string memory _encryptKey
-	) public {
-		require(
-			msg.sender == provider,
-			"Only provider can add blindedKey."
-		);
-		require(
-			consumer2Purchase[_consumer].isKeyAdded == false,
-			"One encryptKey has been added."
-		);
-		consumer2Purchase[_consumer].encryptKey = _encryptKey;
-		consumer2Purchase[_consumer].isKeyAdded = true;
-		emit newEncryptKey(_consumer, _encryptKey);
-	}
-\end{lstlisting}
-
-The data provider encrypts the session key and broker's signature with the consumer's public key and call $addEncryptKey()$ to publish the ciphertext to the smart contract. Consumers listen to $newEncryptKey$ event and decrypt the ciphertext to obtain the session key.
+Before a data provider asks a broker to certify a session key, he blinds the session key first. The blinded session key is published to the smart contract by calling $addBlindedKey()$\ref{lst:key_certification}. Also the broker should use $addSignedBlindedKey()$\ref{lst:key_certification} to publish the signature. As a result, the key certification process is recorded on the smart contract which is traceable afterward. By the way, it is hard for an attacker to compute the session key with blinding messages and signatures on smart contracts.
 
 \begin{table}[H]
 	\caption{Gas consumption for each function of Product Contract}
