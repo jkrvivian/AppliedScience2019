@@ -244,6 +244,8 @@ The TangleID\cite{TangleID} is a self-sovereign identity system based on IOTA th
 \item \textbf{Ethereum Smart Contract: }
 Smart contract is a protocol for formulating agreement on a blockchain that provides verification and execution of the contract. The code in the smart contract can interact with other contracts, make decisions, store data and transfer cryptocurrency. All conditions and states established in the contract are transparent and with enforcement. The appearance of smart contracts makes trading more flexible, and achieves more complex trading patterns in reality.
 
+The Product Contract is used during the trading process, where Product Contract records all the details of data products, such as MAM channel's and endpoint's ID, blinded session key and data providers' DID Document address. Furthermore, data providers and consumers exchange session key through Product Contract without brokers' help. Though this design may cost more transaction fee than doing so off-chain, it is considered a better strategy to assure the profit of both providers and consumers. The further details of key exchangement will be illustrated in Section~\ref{section:trading}.
+
 \item \textbf{Blind Signature}
 There is an inherent risk in revealing session keys to brokers since contents may be copied by brokers, which would result in data providers' losses. Therefore, a blind signature is used to prevent session key copying for such circumstances. Blind signature\cite{blindSig} is a form of digital signature where the message is first "blinded" by a random "blinding factor", then passed to a signer to sign. Figure \ref{fig:blind_signature} illustrates the steps of blind signature. The resulting message, along with the blinding factor, can be later verified with the signer's public key. In our system design, brokers would perform blind signatures during the process of adding new products for data providers, in order to send the secret key of the MAM channel to the smart contract without knowing it.
 
@@ -304,6 +306,8 @@ Brokers certify session keys as well. Only one session key can be signed in each
 The contract address and product description will be stored in a file which is uploaded to IPFS. Consumers can search the desired product by keywords or tags. The consumer then evaluates the product and initiates the trading with the data provider if the consumer is interested in subscribing to the data.
 
 \subsubsection{Trading}
+\label{section:trading}
+
 The entire trading process is as shown in Figure \ref{fig:trading_product}. Once a consumer who wants to subscribe certain streaming data that is generated  pays a subscription fee to the product contract, he/she is added to the consumers list automatically by the smart contract.
 
 \begin{figure}[H]
