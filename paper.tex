@@ -157,7 +157,7 @@ Looking at Airbox\cite{LASS} as an example, every household with an Airbox devic
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=3.3 in]{airbox}
+    \includegraphics[width=5.5 in]{airbox}
     \caption{IoT-enabled personal air quality assistant.}
     \label{fig:airbox}
 \end{figure}
@@ -199,7 +199,7 @@ Brokers represent data providers and consumers to perform computing tasks as bro
 \begin{figure}[h]
     \centering
     \includegraphics[width=3.3 in]{system_design}
-    \caption{The system design of a decentralized architecture which consist of a registrar, data providers, consumers and brokers.}
+    \caption{The system design of a decentralized architecture which consists of a registrar, data providers, consumers and brokers.}
     \label{fig:system_design}
 \end{figure}
 
@@ -289,7 +289,7 @@ Once the accuracy is lower than a certain threshold, which we call "unacceptable
 Refunds are a major issue in our research. However, we do not need to take refund as a factor in our game theory model, since in our decentralized data marketplace we use a smart contract to store the subscription fee which will be paid to buy the future data. The subscription fee will be paid as new data is transmitted to consumers. In other words, the data provider does not need to perform any procedures to transfer subscription fees from his/her own account to consumers' accounts. For the same reason, data providers have no responsibility on refunding processing fees charged by the smart contract.
 
 \subsubsection{Participant Registration}
-At the beginning, the egistrar creates a registration contract, which maintains all participants' information, including their DID documents and public keys. Anyone can query participants' public keys. Those who would like to sell or purchase data may register to become a data provider or consumer. The registrar has the authority to agree with applications. After that, their identities are available in the registration contract and the launching and trading processes can begin.
+At the beginning, the registrar creates a registration contract, which maintains all participants' information, including their DID documents and public keys. Anyone can query participants' public keys. Those who would like to sell or purchase data may register to become a data provider or consumer. The registrar has the authority to agree with applications. After that, their identities are available in the registration contract and the launching and trading processes can begin.
 
 \subsubsection{Launching and Searching Products}
 To sell streaming data, a data provider needs to launch a new product on the data marketplace in advance as shown in Figure \ref{fig:launching_product}. The data provider determines a trusted broker and asks the broker to create a new MAM channel and product contract. Each product has a product contract to record the participants, subscription price brokerage fee, quantity of data and  trading process.
@@ -298,17 +298,17 @@ Brokers certify session keys as well. Only one session key can be signed in each
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=5.5 in]{key_certification}
+    \includegraphics[width=4.4 in]{key_certification}
     \caption{Session key certification process with blind signature.}
     \label{fig:key_certification}
 \end{figure}
 
-The contract address and product description will be stored in a file which is uploaded to IPFS. Consumers can search the desired product by keywords or tags. The consumer then evaluates the product and initiates the trading with the data provider if the consumer is interested in subscribing to the data.
+The contract address and product description will be stored in a file which is uploaded to IPFS. Consumers can search the desired product by keywords or tags. In other words, the narrative description provides an entry to IoT world as end-users are able to label and search data they need based on the abstraction from IPFS files. Hence, the consumer then evaluates the product and initiates the trading with the data provider if the consumer is interested in subscribing to the data.
 
 \subsubsection{Trading}
 \label{section:trading}
 
-The entire trading process is as shown in Figure \ref{fig:trading_product}. Once a consumer who wants to subscribe certain streaming data that is generated  pays a subscription fee to the product contract, he/she is added to the consumers list automatically by the smart contract.
+The entire trading process is as shown in Figure \ref{fig:trading_product}. Once a consumer wants to subscribe certain streaming data that is generated, he/she has to pay subscription fee to the Product Contract and will be automatically added on the list by the smart contract.
 
 \begin{figure}[H]
     \centering
@@ -317,7 +317,7 @@ The entire trading process is as shown in Figure \ref{fig:trading_product}. Once
     \label{fig:trading_product}
 \end{figure}
 
-Next, session key $k$ should be exchanged between the data provider and consumers. To exchange data, Azaria et al\cite{Medrec} seek an off-chain solution which uses an end-to-end communication that is efficient and low-cost. However, it is hard to avoid that the data source is unavailable or the sender sends incorrect data intentionally. Instead of using off-chain solution, we use smart contract to transfer the session key\cite{3tierDataMarket} that not only ensures the consistency of the session key, the availability of the source and the traceability of the record, but also prevents malicious participants to cheat others.
+Next, session key $k$ should be exchanged between the data provider and consumers. To exchange data, Azaria et al\cite{Medrec} seek an off-chain solution which is based on an end-to-end communication to ensure the efficiency and low costs. However, it is hard to avoid that the data source is unavailable or the sender sends incorrect data intentionally. Instead of using off-chain solution, we use smart contract to transfer the session key\cite{3tierDataMarket} that not only ensures the consistency of the session key, the availability of the source and the traceability of the record, but also prevents malicious participants to cheat others.
 
 \begin{lstlisting}[caption={update encrypt key}, label={lst:key_exchange}, frame=single]
     function addEncryptKey(
@@ -387,7 +387,7 @@ Figure \ref{fig:decision_tree} shows the decision tree to depict the repeated ga
 
 \begin{figure}[H] \centering \includegraphics[width=3.3 in]{decision_tree} \caption{Decision Tree}
     \label{fig:decision_tree} \end{figure}
-For every $n$ round, the data provider would pay the maintenance fee, $C_{maintain}$, to as the incentives of maintaining or enhancing the sensors that the data provider owns. We call this a maintenance period. Moreover, the value of the cost of maintenance will decrease as time passes, so we introduce a discounted factor $\beta$ to depict this phenomena.
+For every $n$ round, the data provider would pay the maintenance fee, $C_{maintain}$, to as the incentives of maintaining or enhancing the sensors that the data provider owns. We call this a maintenance period. Moreover, the cost of maintenance will decrease as time passes, so we introduce a discounted factor $\beta$ to depict this phenomena.
 
 Following assumptions are made:
 \begin{enumerate}
@@ -395,7 +395,7 @@ Following assumptions are made:
     \item  Each data provider is the sole provider of the product they produced. \label{monopoly}
     \item  Subscription fees only depends on data quality. \label{fee_vs_quality}
     \item  At least 51\% of consumers are in the same group which has complete information exchange.\label{51_in_group}
-    \item  One of the consumers who has complete information exchange with other 51\% buyers has the ability to examine  data quality. \label{1_in_51}
+    \item  One of the consumers who has complete information exchange with other 51\% buyers has the ability to examine data quality. \label{1_in_51}
 \end{enumerate}
 
 According to \textbf{assumption(\ref{rational_man})}, we learn that few consumers would take malicious actions in this system, since all the consumers are rational. For most of the rational consumer, they can't obviously benefit from collapsing of Data Marketplace.
@@ -440,7 +440,7 @@ Substitute Eq. (\ref{sub_fee}) and Eq. (\ref{C_mtn}) into Eq. (\ref{payoff}). We
 
 The red dot in Figure \ref{fig:payoff_pic} indicates the data quality that data provider would sustain, since the data provider can achieve maximum payoff at that point. Namely, the red dot is the Nash Equilibrium of this game theory model.
 
-Figure \ref{fig:payoff_pic} illustrates the market mechanism of the subscription trading policy we used under the decentralized data marketplace. First, data providers have weak motivation to operate their sensor in low accuracy, since the incentive of low quality data is much less than moderate quality data. Second the great deficit at high accuracy is mostly derived by the rapid increasing of maintenance cost. Thus, if the maintenance fee to achieve decent data quality is under a fair price range, then data provider will automatically provide data with high enough data quality under our assumptions.
+Figure \ref{fig:payoff_pic} illustrates the market mechanism of the subscription trading policy we used under the decentralized data marketplace. First, data providers have weak motivation to operate their sensor in low accuracy, since the incentive of low quality data is much less than moderate quality data. Second, the great deficit at high accuracy is mostly derived by the rapid increasing of maintenance cost. Thus, if the maintenance fee to achieve decent data quality is under a fair price range, then data provider will automatically provide data with high enough data quality under our assumptions.
 
 
 \section{Results}
