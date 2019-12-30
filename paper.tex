@@ -319,6 +319,13 @@ The entire trading process is as shown in Figure \ref{fig:trading_product}. Once
 
 Next, session key $k$ should be exchanged between the data provider and consumers. To exchange data, Azaria et al\cite{Medrec} seek an off-chain solution which is based on an end-to-end communication to ensure the efficiency and low costs. However, it is hard to avoid that the data source is unavailable or the sender sends incorrect data intentionally. Instead of using off-chain solution, we use smart contract to transfer the session key\cite{3tierDataMarket} that not only ensures the consistency of the session key, the availability of the source and the traceability of the record, but also prevents malicious participants to cheat others.
 
+\lstdefinestyle{solidity}{
+	captionpos=b,
+	tabsize=4,
+	basicstyle=\scriptsize
+}
+\lstset{style=solidity}
+
 \begin{lstlisting}[caption={update encrypt key}, label={lst:key_exchange}, frame=single]
     function addEncryptKey(
         address _consumer,
@@ -524,13 +531,6 @@ MAM operations take a lot of time for both devices, but Raspberry Pi 3 spends ev
 \subsection{Smart Contract}
 
 In this experiment, we investigate the cost of executing smart contracts. We implement the smart contract and measure gas(transaction fee of the Ethereum blockchain) usage. There are transaction cost and execution cost associated for an Ethereum transaction. We focus on execution cost which is included in transaction cost.
-
-\lstdefinestyle{solidity}{
-	captionpos=b,
-	tabsize=4,
-	basicstyle=\scriptsize
-}
-\lstset{style=solidity}
 
 \begin{lstlisting}[caption={generate contract}, label={lst:constructor}, frame=single]
 	constructor(
