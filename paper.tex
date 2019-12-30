@@ -527,7 +527,8 @@ In this experiment, we investigate the cost of executing smart contracts. We imp
 
 \lstdefinestyle{solidity}{
 	captionpos=b,
-	tabsize=4
+	tabsize=4,
+	basicstyle=\scriptsize
 }
 \lstset{style=solidity}
 
@@ -557,7 +558,7 @@ In this experiment, we investigate the cost of executing smart contracts. We imp
 	}
 \end{lstlisting}
 
-To create a Product Contract\ref{lst:constructor}, the broker publishes the address of the data provider, subscription fee, brokerage fee, threshold of consent votes of refunding, the channel root and endpoint of MAM channel, and expected number of streaming data.
+To create a Product Contract (Listing. \ref{lst:constructor}), the broker publishes the address of the data provider, subscription fee, brokerage fee, threshold of consent votes of refunding, the channel root and endpoint of MAM channel, and expected number of streaming data.
 
 \begin{lstlisting}[caption={update blinded key and update signature}, label={lst:key_certification}, frame=single]
 	function addBlindedKey(
@@ -592,26 +593,29 @@ To create a Product Contract\ref{lst:constructor}, the broker publishes the addr
 	}
 \end{lstlisting}
 
-Before a data provider asks a broker to certify a session key, he blinds the session key first. The blinded session key is published to the smart contract by calling $addBlindedKey()$\ref{lst:key_certification}. Also the broker should use $addSignedBlindedKey()$\ref{lst:key_certification} to publish the signature. As a result, the key certification process is recorded on the smart contract which is traceable afterward. By the way, it is hard for an attacker to compute the session key with blinding messages and signatures on smart contracts.
+Before a data provider asks a broker to certify a session key, he blinds the session key first. The blinded session key is published to the smart contract by calling $addBlindedKey()$(Listing. \ref{lst:key_certification}). Also the broker should use $addSignedBlindedKey()$(Listing. \ref{lst:key_certification}) to publish the signature. As a result, the key certification process is recorded on the smart contract which is traceable afterward. By the way, it is hard for an attacker to compute the session key with blinding messages and signatures on smart contracts.
 
 \begin{table}[H]
 	\caption{Gas consumption for each function of Product Contract}
+	\centering
 	\label{tab:gas}
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		function & sender & transaction cost (gas) & execution cost (gas) \\ \hline
-		generate contract & Broker & 2954334 & 2251002 \\ \hline
-		subscribe product & Consumer & 65758 & 44486 \\ \hline
-		update blinded key & Provider & 180801 & 147369 \\ \hline
-		update signature & Broker & 201110 & 167678 \\ \hline
-		update encrypt key & Provider & 201624 & 166784 \\ \hline
-		update number & Broker & 54289 & 32825 \\ \hline
-		ask refund & Consumer & 43817 & 22545 \\ \hline
-		withdraw & Broker/Provider/Consumer & 35991 & 14719 \\ \hline
+	\begin{tabular}{cccc}
+		\toprule
+		\textbf{function} & \textbf{sender} & \textbf{transaction cost (gas)} & \textbf{execution cost (gas)} \\ 
+		\midrule
+		generate contract & Broker & 2954334 & 2251002 \\
+		subscribe product & Consumer & 65758 & 44486 \\
+		update blinded key & Provider & 180801 & 147369 \\
+		update signature & Broker & 201110 & 167678 \\
+		update encrypt key & Provider & 201624 & 166784 \\
+		update number & Broker & 54289 & 32825 \\
+		ask refund & Consumer & 43817 & 22545 \\
+		withdraw & Broker/Provider/Consumer & 35991 & 14719 \\
+		\bottomrule
 	\end{tabular}
 \end{table}
 
-Table \ref{tab:gas} shows the gas usage for each function. Creating a smart contract (Listing \ref{lst:constructor} ) costs the most gas, and functions (Listing \ref{lst:key_certification} and Listing \ref{lst:key_exchange}) that are related to key certification and key exchange need a lot of gas as well. Storage on blockchain costs a lot. It is expensive to use memory in Solidity. For instance, an SSTORE operation may cost 20000 gas when the value is set to non-zero from zero according to Ethereum Yellow Paper\cite{Ethereum}. Smart contract initialization, storing ciphertexts and signatures during key certification and key exchange needs a lot of operations and storages which causes high gas consumption. To certify session keys, blind signature is used and the whole process is recorded in the smart contract. However, storage on blockchain is expensive and blind signature is an interactive protocol which requires multi-steps of communications between broker and data provider. We are going to explore the usage of the non-interactive zero knowledge protocol such as zk-SNARKS(zero-knowledge succinct non-interactive argument of knowledge)\cite{Snark} to reduce network and storage cost and improve privacy and security of session keys in our future work. On the other hand, we can observe that the broker is responsible for the most part of transaction fees while consumers only need to send one transaction to subscribe the product if they don't have to refund.
+Table. \ref{tab:gas} shows the gas usage for each function. Creating a smart contract (Listing. \ref{lst:constructor} ) costs the most gas, and functions (Listing. \ref{lst:key_certification} and Listing. \ref{lst:key_exchange}) that are related to key certification and key exchange need a lot of gas as well. Storage on blockchain costs a lot. It is expensive to use memory in Solidity. For instance, an SSTORE operation may cost 20000 gas when the value is set to non-zero from zero according to Ethereum Yellow Paper\cite{Ethereum}. Smart contract initialization, storing ciphertexts and signatures during key certification and key exchange needs a lot of operations and storages which causes high gas consumption. To certify session keys, blind signature is used and the whole process is recorded in the smart contract. However, storage on blockchain is expensive and blind signature is an interactive protocol which requires multi-steps of communications between broker and data provider. We are going to explore the usage of the non-interactive zero knowledge protocol such as zk-SNARKS(zero-knowledge succinct non-interactive argument of knowledge)\cite{Snark} to reduce network and storage cost and improve privacy and security of session keys in our future work. On the other hand, we can observe that the broker is responsible for the most part of transaction fees while consumers only need to send one transaction to subscribe the product if they don't have to refund.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Bulleted lists look like this:
