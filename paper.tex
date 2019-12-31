@@ -558,8 +558,14 @@ Tips selection requires a stable network connection to wait the response from IO
 
 MAM operations take a lot of time for both devices, but Raspberry Pi 3 spends even more time than PC. The simulation results above indicate that MAM is difficult for low-level sensor devices to run, which these devices are the majority hardware as data providers in the data marketplace. Furthermore, sensors with the low computing power and weak internet connection are not able to have enough resources to handle data collection, data transmission on MAM and trading process with consumers simultaneously. 
 
-Therefore, transferring MAM operations to brokers while ensuring the profit and privacy of providers through blind signatures can effectively solve performance problems and lower the threshold for participation in the data marketplace. Brokers can be PCs or powerful machines that runs Ethereum client and Tangle-accelerator\cite{TA}. Where Ethereum client is used to interact with Ethereum and Tangle-accelerator is a caching proxy server for IOTA, which can serve thousands of IOTA requests at once without accessing remote IOTA full nodes frequently. However, MAM operations still cost a considerable time, improving the performance of MAM is an essential issue that needs to be done for the next step.  
+Therefore, transferring MAM operations to brokers while ensuring the profit and privacy of providers through blind signatures can effectively solve performance problems and lower the threshold for participation in the data marketplace. Brokers can be PCs or powerful machines that runs Ethereum client and Tangle-accelerator\cite{TA}. Where Ethereum client is used to interact with Ethereum and Tangle-accelerator is a caching proxy server for IOTA, which can serve thousands of IOTA requests at once without accessing remote IOTA full nodes frequently and provide PoW acceleration. Figure \ref{fig:ta_struct} shows the structure of Tangle-accelerator. However, MAM operations still cost a considerable time, improving the performance of MAM is an essential issue that needs to be done for the next step.  
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5.5 in]{ta_structure}
+    \caption{The structure of Tangle-accelerator.}
+    \label{fig:ta_struct}
+\end{figure}
 
 \subsection{Smart Contract}
 
