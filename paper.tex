@@ -517,7 +517,7 @@ The results in Table \ref{tab:channel_create} and Table \ref{tab:endpoint_create
 Publishing a message to MAM is attaching a zero-value transaction to the Tangle which requires two processes:
 \begin{itemize}[leftmargin=*,labelsep=5.8mm]
 	\item	Tips selection: In IOTA protocol, a new-coming transaction needs to pick up 2 existed transactions called tips to reference and verify. The tips are provided by IOTA full nodes.
-	\item	Proof-of-Work (PoW): Perform a series of mathametic calculation for the transaction in order to be validated.
+	\item	Proof-of-Work (PoW): An algorithm which prevents Denial of Service and spam attacks on a network. a computationally hard puzzle to solve, but easy to verify. IOTA uses a Hashcash\cite{Hashcash} based puzzle.
 \end{itemize}
 
 Tips selection requires a stable network connection to wait the response from IOTA full nodes, and PoW requires enough computation resources to perform. Figure \ref{fig:mam_send} shows PDF of publishing one message to MAM endpoint for 100 times. The average time for PC to send a message is 48.1069 seconds, and Raspberry Pi 3 takes 743.8586 seconds.
