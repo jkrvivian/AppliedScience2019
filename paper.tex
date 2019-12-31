@@ -161,7 +161,34 @@ Looking at Airbox\cite{LASS} as an example, every household with an Airbox devic
     \caption{IoT-enabled personal air quality assistant.}
     \label{fig:airbox}
 \end{figure}
- 
+
+Another example is smart meter data which can assist the energy transition. In the meanwhile, time smart meter data is privacy-sensitive, that implies power consumption can be associated with appliances used. With measurements every 0.5 seconds, it is possible to determine what television channel is being watched.\cite{SmartGridPrivacy}. Furthermore, by facilitating the aggregate data, the owner of these records can perform the following analysis:
+\begin{enumerate}[leftmargin=*,labelsep=4.9mm]
+    \item Detect how many people live at certain house by watching the number of cycles of indoor hot water heater (not accounting for bad hygiene);
+    \item Acquainted with somebody's availability by the energy cycle of the TV;
+    \item Know about somebody's activities by the energy signature of the coffee pot or the toaster;
+\end{enumerate}
+
+As shown in Figure \ref{fig:power_usage}, the data is considered granular data and can be used to track somebody's behaviour and location. Once data becomes granular, the "Pandora's box" of data privacy is opened up. Questions such as data ownership, data usage and data protection become new challenges for both utility companies and their infrastructure vendors.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4.5 in]{power_usage}
+    \caption{Power consumption peaks can be associated with individual appliances. (Source: Privacy Issues Related to Smart Grid Technologies, Megan J. Hertzler)}
+    \label{fig:power_usage}
+\end{figure}
+
+The General Data Protection Regulation (GDPR) came into effect since May 25, 2018. It provides data and privacy protection for European citizens. When dealing with personal identifiable information (like the measurements of a smart meter) a service provider has to:
+\begin{enumerate}[leftmargin=*,labelsep=4.9mm]
+    \item State the goal for data usage clearly (and only use the data for that goal).
+    \item Have consent of the consumer to access the data.
+    \item Stop collecting data when consent is revoked.
+\end{enumerate}
+
+In short, energy usage data cannot be legally shared without adhering to it. Fr open usage of smart meter measurements a solution needs to be provided that adheres to the requirements of the GDPR. Two goals of this solution are: 1) Energy data goes directly from the smart meter to the service provider; 2) Consent (authorizations to access energy data) are stored decentrally. When data or consent is stored centrally, there are privacy concerns. Consent might be irrevocable because a centralized server is down, and it also lead to a vendor lock-in, where the owner of the smart meter data reader determines what service providers can use the data, instead of creating a level playing field where you can authorize anyone to access the data.
+
+The highly flexible value creation networks that result from market economy principles will require new forms of collaboration between companies, depending on the creation of a common global communication and computing infrastructure that allows economic relationships between machines. Our proposed decentralized data marketplace is expected to serve as a vendor and industry-neutral platform, encouraging open innovation and industrial automation.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Materials and Methods}
 \subsection{Related Work}
