@@ -1,43 +1,6 @@
-%  LaTeX support: latex@mdpi.com 
-%  In case you need support, please attach all files that are necessary for compiling as well as the log file, and specify the details of your LaTeX setup (which operating system and LaTeX version / tools you are using).
-
-%=================================================================
 \documentclass[journal,article,applsci,submit,moreauthors,pdftex]{Definitions/mdpi} 
 \graphicspath{ {./images/} }
-% If you would like to post an early version of this manuscript as a preprint, you may use preprint as the journal and change 'submit' to 'accept'. The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
 
-%--------------------
-% Class Options:
-%--------------------
-%----------
-% journal
-%----------
-% Choose between the following MDPI journals:
-% acoustics, actuators, addictions, admsci, aerospace, agriculture, agriengineering, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, applsci, arts, asc, asi, atmosphere, atoms, axioms, batteries, bdcc, behavsci , beverages, bioengineering, biology, biomedicines, biomimetics, biomolecules, biosensors, brainsci , buildings, cancers, carbon , catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, children, cleantechnol, climate, clockssleep, cmd, coatings, colloids, computation, computers, condensedmatter, cosmetics, cryptography, crystals, dairy, data, dentistry, designs , diagnostics, diseases, diversity, drones, econometrics, economies, education, ejihpe, electrochem, electronics, energies, entropy, environments, epigenomes, est, fermentation, fibers, fire, fishes, fluids, foods, forecasting, forests, fractalfract, futureinternet, futurephys, galaxies, games, gastrointestdisord, gels, genealogy, genes, geohazards, geosciences, geriatrics, hazardousmatters, healthcare, heritage, highthroughput, horticulturae, humanities, hydrology, ijerph, ijfs, ijgi, ijms, ijns, ijtpp, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jcdd, jcm, jcp, jcs, jdb, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmse, jnt, jof, joitmc, jpm, jrfm, jsan, land, languages, laws, life, literature, logistics, lubricants, machines, magnetochemistry, make, marinedrugs, materials, mathematics, mca, medicina, medicines, medsci, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, modelling, molbank, molecules, mps, mti, nanomaterials, ncrna, neuroglia, nitrogen, notspecified, nutrients, ohbm, optics, particles, pathogens, pharmaceuticals, pharmaceutics, pharmacy, philosophies, photonics, physics, plants, plasma, polymers, polysaccharides, preprints , proceedings, processes, proteomes, psych, publications, quantumrep, quaternary, qubs, reactions, recycling, religions, remotesensing, reports, resources, risks, robotics, safety, sci, scipharm, sensors, separations, sexes, signals, sinusitis, smartcities, sna, societies, socsci, soilsystems, sports, standards, stats, surfaces, surgeries, sustainability, symmetry, systems, technologies, test, toxics, toxins, tropicalmed, universe, urbansci, vaccines, vehicles, vetsci, vibration, viruses, vision, water, wem, wevj
-
-%---------
-% article
-%---------
-% The default type of manuscript is "article", but can be replaced by: 
-% abstract, addendum, article, benchmark, book, bookreview, briefreport, casereport, changes, comment, commentary, communication, conceptpaper, conferenceproceedings, correction, conferencereport, expressionofconcern, extendedabstract, meetingreport, creative, datadescriptor, discussion, editorial, essay, erratum, hypothesis, interestingimages, letter, meetingreport, newbookreceived, obituary, opinion, projectreport, reply, retraction, review, perspective, protocol, shortnote, supfile, technicalnote, viewpoint
-% supfile = supplementary materials
-
-%----------
-% submit
-%----------
-% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g., the logo of the journal will get visible), the headings, and the copyright information. Also, line numbering will be removed. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
-
-%------------------
-% moreauthors
-%------------------
-% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
-
-%---------
-% pdftex
-%---------
-% The option pdftex is for use with pdfLaTeX. If eps figures are used, remove the option pdftex and use LaTeX and dvi2pdf.
-
-%=================================================================
 \firstpage{1} 
 \makeatletter 
 \setcounter{page}{\@firstpage} 
@@ -47,32 +10,13 @@
 \articlenumber{5}
 \pubyear{2019}
 \copyrightyear{2019}
-%\externaleditor{Academic Editor: name}
 \history{Received: date; Accepted: date; Published: date}
 %\updates{yes} % If there is an update available, un-comment this line
 
-%% MDPI internal command: uncomment if new journal that already uses continuous page numbers 
-%\continuouspages{yes}
-
-%------------------------------------------------------------------
-% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
-%\pdfoutput=1
-
-%=================================================================
 % Add packages and commands here. The following packages are loaded in our class file: fontenc, calc, indentfirst, fancyhdr, graphicx, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, amsthm, hyphenat, natbib, hyperref, footmisc, geometry, caption, url, mdframed, tabto, soul, multirow, microtype, tikz
 \usepackage{listings}
 
-%=================================================================
-%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
-%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
-
-%=================================================================
-% Full title of the paper (Capitalized)
 \Title{An Autonomous and Decentralized Data Marketplace for Trusted Machine Economy $^{\dagger}$}
-
-% Author Orchid ID: enter ID or remove command
-\newcommand{\orcidauthorA}{0000-0000-000-000X} % Add \orcidA{} behind the author's name
-%\newcommand{\orcidauthorB}{0000-0000-000-000X} % Add \orcidB{} behind the author's name
 
 % Authors, for the paper (add full first names)
 \Author{Zan-Jun Wang $^{1}$, Ching-Hua (Vivian) Lin $^{2}$, Yang-Hao Yuan $^{3}$, Zih-shiuan (Spin) Yuan$^{3}$ and Ching-Chun (Jim) Huang$^{2,}$*}
@@ -89,57 +33,22 @@ $^{3}$ \quad BiiLabs Co., Ltd.}
 % Contact information of the corresponding author
 \corres{Correspondence: jserv@ccns.ncku.edu.tw}
 
-% Current address and/or shared authorship
-%\firstnote{Current address: Affiliation 3} 
-%\secondnote{These authors contributed equally to this work.}
-% The commands \thirdnote{} till \eighthnote{} are available for further notes
-
-%\simplesumm{} % Simple summary
-
 \conference{2019 IEEE Eurasia Conference on IOT, Communication and Engineering (IEEE ECICE 2019), National Formosa University, Yunlin, Taiwan, 3–6 October, 2019} % An extended version of a conference paper
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-%%%% 200 words
 \abstract{Transacting IoT data must be different in many from traditional approaches in order to build much-needed trust in data marketplaces—trust that will be key to their sustainability. Data generated internally to an organization is usually not enough to remain competitive, enhance customer experiences, or improve strategic decision-making. In this paper, we propose a novel approach to construct IoT-enabled data marketplaces via a decentralized and trustless architecture through the posting of trade records while including the transaction process on distributed ledgers. This approach can efficiently enhance the degree of transparency, as all interactions with smart contracts will be written on-chain. Storage via an end-to-end encrypted message channel allows transmitting and accessing trusted data streams over distributed ledgers regardless of the size or cost of the device, while simultaneously making a verifiable Auth-compliant request to the platform. Furthermore, the platform will complete matching, trading and refunding processes without human intervention which also protects the rights of data providers and consumers through a trading policy written on the smart contract, and finally apply evolutionary game theory to the machine economy.}
 
 % Keywords
 \keyword{streaming data; crowd sensing; data marketplace; decentralization}
 
-% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
-%\PACS{J0101}
-%\MSC{}
-%\JEL{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Only for the journal Diversity
-%\LSID{\url{http://}}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Only for the journal Applied Sciences:
 %\featuredapplication{Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Only for the journal Data:
-%\dataset{DOI number or link to the deposited data set in cases where the data set is published or set to be published separately. If the data set is submitted and will be published as a supplement to this paper in the journal Data, this field will be filled by the editors of the journal. In this case, please make sure to submit the data set as a supplement when entering your manuscript into our manuscript editorial system.}
-
-%\datasetlicense{license under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Only for the journal Toxins
-%\keycontribution{The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.}
-
-%\setcounter{secnumdepth}{4}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%The order of the section titles is: Introduction, Materials and Methods, Results, Discussion, Conclusions for these journals: aerospace,algorithms,antibodies,antioxidants,atmosphere,axioms,biomedicines,carbon,crystals,designs,diagnostics,environments,fermentation,fluids,forests,fractalfract,informatics,information,inventions,jfmk,jrfm,lubricants,neonatalscreening,neuroglia,particles,pharmaceutics,polymers,processes,technologies,viruses,vision
 
 \section{Introduction}
-The growth of data marketplaces is an inevitable result of the IoT (Internet of Things) revolution. As physical assets such as ships, factories, vehicles, farms and buildings become digital, their digital twins will gradually act as secure data exchanges.\cite{digitaltwin}\cite{AutonomousDriving} As data streams surge across silos and carry value across organizations, traditional value chains will transition into a web of value. This paradigm shift will be more complex to administers, forcing businesses to rethink their competitive play as part of these ecosystems. Data marketplaces will emerge as a means to exchange data, monetize data streams and provide the basis of new business models. We refer to this new wave of value creation, for the Internet of Everything, as the "Economy of Things." There are three main barriers to achieving data marketplace:
+The growth of data marketplaces is an inevitable result of the IoT (Internet of Things) revolution. As physical assets such as ships, factories, vehicles, farms and buildings become digital, their digital twins will gradually act as secure data exchanges.\cite{digitaltwin, AutonomousDriving} As data streams surge across silos and carry value across organizations, traditional value chains will transition into a web of value. This paradigm shift will be more complex to administers, forcing businesses to rethink their competitive play as part of these ecosystems. Data marketplaces will emerge as a means to exchange data, monetize data streams and provide the basis of new business models. We refer to this new wave of value creation, for the Internet of Everything, as the "Economy of Things." There are three main barriers to achieving data marketplace:
 \begin{enumerate}[leftmargin=*,labelsep=4.9mm]
     \item Data owners do not have much control over their data and their data is locked in silos managed by products and services companies.
     \item Data owners only have access to their own data which has little value when it comes to knowledge discovery.
@@ -196,7 +105,7 @@ As the economic value of huge amounts of data emerges, several researchers have 
 
 Data Integrity as a Service (DIaaS) is a blockchain based framework for data integrity proposed by Liu et al.\cite{DIaas} which is a Cloud Server Service (CSS) that allows both data provider and consumer to validate data integrity by comparing hashes on Ethereum smart contracts\cite{smartContract} and cloud servers. Moreover, Ethereum smart contract can also realize the purchase agreement, including authorization and penalization. However, the architecture of DIaaS needs high trust on the CSS. If the CSS is malicious or has crashed, losses to both providers and consumers will result. Also, performance analysis shows that IoT devices have low efficiency interactions with Ethereum due to the time-consuming Proof-of-Work (PoW) process.
 
-To address the inefficiency of the Blockchain, \textbf{IOTA}\cite{IOTAwhitepaper} is a cryptocurrency for the IoT industry based on a revolutionary distributed ledger technology, the \textbf{Tangle}, which creates the potential for feeless transactions between users and statistically indefinite network scalability. On top of that, \textbf{Masked Authenticated Messaging(MAM)}\cite{MAM}\cite{MAMSpec}\cite{MAMDescription}, is provided for a second layer data communication protocol which allows transmission, access, and verification of an encrypted data stream over the Tangle where privacy and integrity meet.
+To address the inefficiency of the Blockchain, \textbf{IOTA}\cite{IOTAwhitepaper} is a cryptocurrency for the IoT industry based on a revolutionary distributed ledger technology, the \textbf{Tangle}, which creates the potential for feeless transactions between users and statistically indefinite network scalability. On top of that, \textbf{Masked Authenticated Messaging(MAM)}\cite{MAM, MAMSpec, MAMDescription}, is provided for a second layer data communication protocol which allows transmission, access, and verification of an encrypted data stream over the Tangle where privacy and integrity meet.
 
 Based on Tangle and MAM, the IOTA Foundation launched autonomous and decentralized Industry Marketplace\cite{IOTAIdustryMarketplace} which is suitable for IoT streaming data that not only allows data providers to put data on Tangle without any trusted cloud services, but also allow providers and consumers to trade on Tangle with privacy protection and assurance of data integrity from the source with MAM. Nevertheless, the platform design is centralized, where new devices require manual approval to be visible in the marketplace. Also, interacting with Tangle is still the bottleneck for low-level devices especially in an unstable network or electrically noisy environment.
 
@@ -250,13 +159,10 @@ Either channel or endpoint is like singly-linked list. The MAM channel's ID and 
 
 The authentication in MAM includes source and data authentication. Source authentication ensures that the message originates from the claimed owner, and data authentication ensures the integrity of the data from that sender. These are achieved through Merkle signature scheme\cite{MSS} (MSS) which is a digital signature scheme based on Merkle Hash Trees and One-way hash functions. However, the size of Merkle Hash Trees should be fixed at start, which is the size of a channel and endpoint is decided before creation. Thus data providers need to firstly decide how to distribute data product into MAM channels or endpoints.
 
-% interaction between provider
 Data provider is the main role to interact with MAM. With a seed, a provider can start creating a channel or endpoint. As above mentioned, the length of a channel and an endpoint is fixed, thus providers need to decide the selling unit of data products according to its data type or pricing strategy. Also data providers can a make product preview which is public and not encrypted on MAM. In Figure \ref{fig:mam_struct}, a "central endpoint" means its endpoint's ID is the same as channel's ID. By attaching part of the product to central endpoint can give consumers a quick preview with channel's ID only. Then if the trade establishes, providers can then give consumers the encrypted endpoint and session key to consumers. After retrieving the messages on endpoints, users can easily verify the content with digital signatures included in messages. 
 
-% why MAM
 The decentralized and fault-tolerant charactaristic of distributed ledgers reduce the risks of centralized storage services, and the underlying IOTA network is scalable which withstands real-time data while increasing users all over the world. Moreover, the features of MAM makes it an even better data storage which allows preserving streaming data while ensuring data integrity, proving data ownership to any participants and managing session keys of data. And through the access control and the desing of channel, endpoint of MAM, participants are allowed to subscribe the future data. This ensures that only service requester and selected provider are in possession of a key to decrypt and read the content of the MAM channel and therefore retrieve transaction data for audit.
 
-% efficiency problem of MAM
 While the operations of MAM time-consuming, brokers are responsible not only for being the bridge of providers and consumers but for all MAM related operations, such as channel creation and encrypted data publishing in our system. See Figure \ref{fig:launching_product}.
 
 \begin{figure}[H]
@@ -658,63 +564,17 @@ Before a data provider asks a broker to certify a session key, he blinds the ses
 
 Table \ref{tab:gas} shows the gas usage for each function. Creating a smart contract (Listing \ref{lst:constructor}) costs the most gas, and functions (Listing \ref{lst:key_exchange} and Listing \ref{lst:key_certification}) that are related to key certification and key exchange need a lot of gas as well. Storage on blockchain costs a lot. It is expensive to use memory in Solidity. For instance, an SSTORE operation may cost 20000 gas when the value is set to non-zero from zero according to Ethereum Yellow Paper\cite{Ethereum}. Smart contract initialization, storing ciphertexts and signatures during key certification and key exchange needs a lot of operations and storages which causes high gas consumption. To certify session keys, blind signature is used and the whole process is recorded in the smart contract. However, storage on blockchain is expensive and blind signature is an interactive protocol which requires multi-steps of communications between broker and data provider. In our future work, we are going to explore the usage of the non-interactive zero knowledge protocol such as zk-SNARKS(zero-knowledge succinct non-interactive argument of knowledge)\cite{Snark} which can generate proofs off-chain and simplify the verification process that could not only reduce network and storage cost but also improve the privacy and security of session keys. On the other hand, we can observe that the broker is responsible for the most part of transaction fees while consumers only need to send one transaction to subscribe the product if they do not have to refund.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Bulleted lists look like this:
-%\begin{itemize}[leftmargin=*,labelsep=5.8mm]
-%Numbered lists can be added as follows:
-%\begin{enumerate}[leftmargin=*,labelsep=4.9mm]
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
-
 By combining the established standards and openly-developed specifications, this paper proposed an autonomous data marketplace design to serve as a vendor and industry-neutral platform, automating the trading of digital assets and services. It was built with blockchain network, immutable audit trails, and contracts with an integrated decentralized identity system, to ensure the authenticity of all participants and enable secure communication and flexible trading mechanisms.
 
-%Data Auction
 The data auction process is a data trading mechanism and an economically-driven scheme that establishes corresponding prices of data products through bidding process between consumers and providers. While there has been many auction models\cite{BigPicDataMarket} in several areas, there has been minimal research on third-party auction platforms. Our proposed decentralized data marketplace protects the privacy of participants which reveals the minimum information for validation and reduces the suspicion of trust to centralized parties or auctioneers. However, the auction process between multiple participants and analysis of potential threats are still critical issues that need to be resolved. For the game theory model presented in this work, we assume each data provider's behavior is independent. However, normally there would be multiple data providers providing similar products (substitutions). Only one provider is taken into considerations at present.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \reftitle{References}
 
-% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
-% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
-
-%=====================================
-% References, variant A: external bibliography
-%=====================================
 \externalbibliography{yes}
 \bibliography{references}
 
-%=====================================
-% References, variant B: internal bibliography
-%=====================================
-%\begin{thebibliography}{999}
-%\bibliography{references}
-% Reference 1
-%\bibitem[Author1(year)]{ref-journal}
-%Author1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
-% Reference 2
-%\bibitem[Author2(year)]{ref-book}
-%Author2, L. The title of the cited contribution. In {\em The Book Title}; Editor1, F., Editor2, A., Eds.; %Publishing House: City, Country, 2007; pp. 32--58.
-%\end{thebibliography}
-
-% The following MDPI journals use author-date citation: Arts, Econometrics, Economies, Genealogy, Humanities, IJFS, JRFM, Laws, Religions, Risks, Social Sciences. For those journals, please follow the formatting guidelines on http://www.mdpi.com/authors/references
-% To cite two works by the same author: \citeauthor{ref-journal-1a} (\citeyear{ref-journal-1a}, \citeyear{ref-journal-1b}). This produces: Whittaker (1967, 1975)
-% To cite two works by the same author with specific pages: \citeauthor{ref-journal-3a} (\citeyear{ref-journal-3a}, p. 328; \citeyear{ref-journal-3b}, p.475). This produces: Wong (1999, p. 328; 2000, p. 475)
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% optional
-%\sampleavailability{Samples of the compounds ...... are available from the authors.}
-
-%% for journal Sci
-%\reviewreports{\\
-%Reviewer 1 comments and authors’ response\\
-%Reviewer 2 comments and authors’ response\\
-%Reviewer 3 comments and authors’ response
-%}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
 
